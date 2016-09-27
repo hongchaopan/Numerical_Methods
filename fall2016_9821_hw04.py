@@ -8,6 +8,7 @@ import black_scholes as BS
 import Binomial_European as BE  # European options
 import Binomial as BA           # American options
 import csv
+import time
 
 def var_reduction(t,S,K,T,sigma,q,r,N,option_type=None,method_type=None):
     '''
@@ -123,7 +124,7 @@ def main():
     #print(K,S,q,sigma,r,T,t,N)
     # Get the exact value
     V_exact,delta_exact,gamma_exact,theta_exact=BA.Average_binomial_American(S,K,T,sigma,q,r,N,"PUT")
-    print("The exact value is: ", V_exact)
+    print("The exact value is: ", V_exact, delta_exact,gamma_exact,theta_exact)
 
     # Write exact value
     # Write the results to csv files
@@ -188,7 +189,7 @@ def main():
         V_var_BBS[i],delta_var_BBS[i],gamma_var_BBS[i],theta_var_BBS[i]=var_reduction(t,S,K,T,sigma,q,r,steps[i],"PUT","BBS")
 
         V_BBSR[i],delta_BBSR[i],gamma_BBSR[i],theta_BBSR[i]=BA.BBSR_American(t,S,K,T,sigma,q,r,steps[i],"PUT")
-        V_var_BBSR[i],delta_var_BBS[i],gamma_var_BBS[i],theta_var_BBS[i]=var_reduction(t,S,K,T,sigma,q,r,steps[i],"PUT","BBSR")
+        V_var_BBSR[i],delta_var_BBSR[i],gamma_var_BBSR[i],theta_var_BBSR[i]=var_reduction(t,S,K,T,sigma,q,r,steps[i],"PUT","BBSR")
 
         V_exact_vec[i]=V_exact
         delta_exact_vec[i]=delta_exact
@@ -548,6 +549,8 @@ def main():
 
 if __name__ =="__main__":
 
+    start=time.time()
+    print("Start recording running time:")
     result_matrix=main()
     print("The result matrix is:")
     print(result_matrix)
@@ -558,3 +561,6 @@ if __name__ =="__main__":
     writer = csv.writer(csvfile)
     writer.writerows(result_matrix)
     csvfile.close()
+
+    end=time.time()
+    print("Running time is: "(end-start))
