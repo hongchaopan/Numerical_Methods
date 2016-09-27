@@ -74,3 +74,4 @@ if __name__ == "__main__":
     print (black_scholes(0,42,40,0.5,0.3,0.05,0.03))
     print (black_scholes(0,42,40,0.5,0.3,0.05,0.03,"CALL"))
     print (black_scholes(0,42,40,0.5,0.3,0.05,0.03,"PUT"))
+    print(delta_BS_put(0,42,40,0.5,0.3,0.05,0.03))

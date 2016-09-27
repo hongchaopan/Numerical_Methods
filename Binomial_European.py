@@ -61,26 +61,26 @@ def Binomial_European(S,K,T,sigma,q,r,N,option_type=None):
 
                 V00_C = V_call[0]
 
-        S11 = u * S
-        S10 = d * S
-        S22 = u * u * S
-        S21 = u * d * S
-        S20 = d * d * S
-        # Calculate greeks
-        Delta_P = (V10_P - V11_P) / (S10 - S11)
-        Delta_C = (V10_C - V11_C) / (S10 - S11)
-        Gamma_P = ((V20_P - V21_P) / (S20 - S21) - (V21_P - V22_P) / (S21 - S22)) / ((S20 - S22) / 2)
-        Gamma_C = ((V20_C - V21_C) / (S20 - S21) - (V21_C - V22_C) / (S21 - S22)) / ((S20 - S22) / 2)
-        Theta_P = (V21_P - V00_P) / (2 * delta_t)
-        Theta_C = (V21_C - V00_C) / (2 * delta_t)
+    S11 = u * S
+    S10 = d * S
+    S22 = u * u * S
+    S21 = u * d * S
+    S20 = d * d * S
+    # Calculate greeks
+    Delta_P = (V10_P - V11_P) / (S10 - S11)
+    Delta_C = (V10_C - V11_C) / (S10 - S11)
+    Gamma_P = ((V20_P - V21_P) / (S20 - S21) - (V21_P - V22_P) / (S21 - S22)) / ((S20 - S22) / 2)
+    Gamma_C = ((V20_C - V21_C) / (S20 - S21) - (V21_C - V22_C) / (S21 - S22)) / ((S20 - S22) / 2)
+    Theta_P = (V21_P - V00_P) / (2 * delta_t)
+    Theta_C = (V21_C - V00_C) / (2 * delta_t)
 
-        if option_type is None:
-            print("No option type indicated, assuming CALL.")
-            return V_call[0], Delta_C, Gamma_C, Theta_C  # The value of the European call option
-        elif option_type.upper() == "CALL":
-            return V_call[0], Delta_C, Gamma_C, Theta_C  # The value of the European call option
-        elif option_type.upper() == "PUT":
-            return V_put[0], Delta_P, Gamma_P, Theta_P  # The value of the European put option
+    if option_type is None:
+        print("No option type indicated, assuming CALL.")
+        return V_call[0], Delta_C, Gamma_C, Theta_C  # The value of the European call option
+    elif option_type.upper() == "CALL":
+        return V_call[0], Delta_C, Gamma_C, Theta_C  # The value of the European call option
+    elif option_type.upper() == "PUT":
+        return V_put[0], Delta_P, Gamma_P, Theta_P  # The value of the European put option
 
 
 def Average_binomial_European(S,K,T,sigma,q,r,N,option_type=None):
@@ -162,26 +162,26 @@ def BBS_European(t,S,K,T,sigma,q,r,N,option_type=None):
 
                 V00_C = V_call[0]
 
-        S11 = u * S
-        S10 = d * S
-        S22 = u * u * S
-        S21 = u * d * S
-        S20 = d * d * S
-        # Calculate greeks
-        Delta_P = (V10_P - V11_P) / (S10 - S11)
-        Delta_C = (V10_C - V11_C) / (S10 - S11)
-        Gamma_P = ((V20_P - V21_P) / (S20 - S21) - (V21_P - V22_P) / (S21 - S22)) / ((S20 - S22) / 2)
-        Gamma_C = ((V20_C - V21_C) / (S20 - S21) - (V21_C - V22_C) / (S21 - S22)) / ((S20 - S22) / 2)
-        Theta_P = (V21_P - V00_P) / (2 * delta_t)
-        Theta_C = (V21_C - V00_C) / (2 * delta_t)
+    S11 = u * S
+    S10 = d * S
+    S22 = u * u * S
+    S21 = u * d * S
+    S20 = d * d * S
+    # Calculate greeks
+    Delta_P = (V10_P - V11_P) / (S10 - S11)
+    Delta_C = (V10_C - V11_C) / (S10 - S11)
+    Gamma_P = ((V20_P - V21_P) / (S20 - S21) - (V21_P - V22_P) / (S21 - S22)) / ((S20 - S22) / 2)
+    Gamma_C = ((V20_C - V21_C) / (S20 - S21) - (V21_C - V22_C) / (S21 - S22)) / ((S20 - S22) / 2)
+    Theta_P = (V21_P - V00_P) / (2 * delta_t)
+    Theta_C = (V21_C - V00_C) / (2 * delta_t)
 
-        if option_type is None:
-            print("No option type indicated, assuming CALL.")
-            return V_call[0], Delta_C, Gamma_C, Theta_C  # The value of the European call option
-        elif option_type.upper() == "CALL":
-            return V_call[0], Delta_C, Gamma_C, Theta_C  # The value of the European call option
-        elif option_type.upper() == "PUT":
-            return V_put[0], Delta_P, Gamma_P, Theta_P  # The value of the European put option
+    if option_type is None:
+        print("No option type indicated, assuming CALL.")
+        return V_call[0], Delta_C, Gamma_C, Theta_C  # The value of the European call option
+    elif option_type.upper() == "CALL":
+        return V_call[0], Delta_C, Gamma_C, Theta_C  # The value of the European call option
+    elif option_type.upper() == "PUT":
+        return V_put[0], Delta_P, Gamma_P, Theta_P  # The value of the European put option
 
 
 def BBSR_European(t,S,K,T,sigma,q,r,N,option_type=None):
@@ -199,7 +199,7 @@ def BBSR_European(t,S,K,T,sigma,q,r,N,option_type=None):
     :return:        value of option via BBSR
     '''
     V_BBS1, delta1, gamma1, theta1 = BBS_European(t, S, K, T, sigma, q, r, N, option_type)
-    V_BBS2, delta2, gamma2, theta2 = BBS_European(t, S, K, T, sigma, q, r, N / 2, option_type)
+    V_BBS2, delta2, gamma2, theta2 = BBS_European(t, S, K, T, sigma, q, r, int(N / 2), option_type)
     V_BBSR = (2 * V_BBS1 - V_BBS2)
     delta_BBSR = (2 * delta1 - delta2)
     gamma_BBSR = (2 * gamma1 - gamma2)
@@ -214,4 +214,9 @@ if __name__ == "__main__":
     K=40;S=41;q=1/100;sigma=30/100;r=3/100; T=1; t=0
     N=100 # Steps of binomial tree
 
+    # Get the exact value
+    V_exact, delta_exact, gamma_exact, theta_exact = Average_binomial_European(S, K, T, sigma, q, r, N, "PUT")
+    print("The exact value is: ", V_exact)
 
+    v, delta, gamma, theta = Binomial_European(S, K, T, sigma, q, r, 10, "PUT")
+    print(v, delta, gamma, theta)
