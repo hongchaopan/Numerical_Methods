@@ -119,12 +119,20 @@ def main():
 
     #Parameters
     K=40;S=41;q=1/100;sigma=30/100;r=3/100; T=1; t=0
-    N=101 # Steps of binomial tree
+    N=10000 # Steps of binomial tree
     #print(K,S,q,sigma,r,T,t,N)
     # Get the exact value
     V_exact,delta_exact,gamma_exact,theta_exact=BA.Average_binomial_American(S,K,T,sigma,q,r,N,"PUT")
     print("The exact value is: ", V_exact)
 
+    # Write exact value
+    # Write the results to csv files
+    '''
+    csvfile2 = file("exact_value.csv", "wb")
+    writer = csv.writer(csvfile2)
+    writer.writerow(V_exact)
+    csvfile2.close()
+    '''
     # Get the value of Binomial tree
     V_bino=np.zeros(nn)
     V_var_bino=np.zeros(nn)
@@ -169,7 +177,7 @@ def main():
     gamma_exact_vec = np.zeros(nn)
     theta_exact_vec = np.zeros(nn)
 
-    for i in range(1):
+    for i in range(nn):
         V_bino[i],delta_bino[i],gamma_bino[i],theta_bino[i]=BA.Binomial_American(S,K,T,sigma,q,r,steps[i],"PUT")
         V_var_bino[i],delta_var_bino[i],gamma_var_bino[i],theta_var_bino[i]=var_reduction(t,S,K,T,sigma,q,r,steps[i],"PUT","BINO")
 

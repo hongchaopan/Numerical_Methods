@@ -97,7 +97,7 @@ def Average_binomial_American(S,K,T,sigma,q,r,N,option_type=None):
     :return:        value of options
     '''
     v1,delta1,gamma1,theta1=Binomial_American(S,K,T,sigma,q,r,N,option_type)
-    v2,delta2,gamma2,theta2 = Binomial_American(S, K, T, sigma, q, r, N-1, option_type)
+    v2,delta2,gamma2,theta2 = Binomial_American(S, K, T, sigma, q, r, N+1, option_type)
     v=(v1+v2)/2
     delta=(delta1+delta2)/2
     gamma=(gamma1+gamma2)/2
