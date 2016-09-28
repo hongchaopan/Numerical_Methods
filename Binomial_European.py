@@ -212,11 +212,12 @@ def BBSR_European(t,S,K,T,sigma,q,r,N,option_type=None):
 
 if __name__ == "__main__":
     K=40;S=41;q=1/100;sigma=30/100;r=3/100; T=1; t=0
+
     N=100 # Steps of binomial tree
 
     # Get the exact value
     V_exact, delta_exact, gamma_exact, theta_exact = Average_binomial_European(S, K, T, sigma, q, r, N, "PUT")
-    print("The exact value is: ", V_exact)
+    #print("The exact value is: ", V_exact,delta_exact,gamma_exact,theta_exact)
 
-    v, delta, gamma, theta = Binomial_European(S, K, T, sigma, q, r, 10, "PUT")
-    print(v, delta, gamma, theta)
+    v, delta, gamma, theta = Binomial_European(S, K, T, sigma, q, r, 20, "PUT")
+    print("Binomail European: Value, delta1, gamma1, theta1:",v, delta, gamma, theta)

@@ -118,6 +118,8 @@ def main():
     steps=get_step(nn)
     print (steps)
 
+    start=time.time()
+    print("Start computing exact value")
     #Parameters
     K=40;S=41;q=1/100;sigma=30/100;r=3/100; T=1; t=0
     N=10000 # Steps of binomial tree
@@ -125,6 +127,8 @@ def main():
     # Get the exact value
     V_exact,delta_exact,gamma_exact,theta_exact=BA.Average_binomial_American(S,K,T,sigma,q,r,N,"PUT")
     print("The exact value is: ", V_exact, delta_exact,gamma_exact,theta_exact)
+    end=time.time()
+    print("Time for 10000 Average binomail tree method: ",(end-start))
 
     # Write exact value
     # Write the results to csv files
@@ -541,15 +545,9 @@ def main():
 
 
 
-
-
-
-
-
-
 if __name__ =="__main__":
 
-    start=time.time()
+    start2=time.time()
     print("Start recording running time:")
     result_matrix=main()
     print("The result matrix is:")
@@ -562,5 +560,5 @@ if __name__ =="__main__":
     writer.writerows(result_matrix)
     csvfile.close()
 
-    end=time.time()
-    print("Running time is: "(end-start))
+    end2=time.time()
+    print("Whole Running time is: ",(end2-start2))
