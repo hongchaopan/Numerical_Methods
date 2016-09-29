@@ -219,5 +219,11 @@ if __name__ == "__main__":
     V_exact, delta_exact, gamma_exact, theta_exact = Average_binomial_European(S, K, T, sigma, q, r, N, "PUT")
     #print("The exact value is: ", V_exact,delta_exact,gamma_exact,theta_exact)
 
-    v, delta, gamma, theta = Binomial_European(S, K, T, sigma, q, r, 20, "PUT")
-    print("Binomail European: Value, delta1, gamma1, theta1:",v, delta, gamma, theta)
+    v, delta, gamma, theta = Binomial_European(S, K, T, sigma, q, r, N, "PUT")
+    print("Binomial European: Value, delta1, gamma1, theta1:",v, delta, gamma, theta)
+
+    V_BS=BS.black_scholes(t,S,K,T,sigma,r,q,"PUT")
+    delta_BS=BS.delta_BS_put(t,S,K,T,sigma,r,q)
+    gamma_BS=BS.gamma_BS(t,S,K,T,sigma,r,q)
+    theta_BS=BS.theta_BS_put(t,S,K,T,sigma,r,q)
+    print("BS: V, delta, gamma, theta",V_BS,delta_BS,gamma_BS,theta_BS)
